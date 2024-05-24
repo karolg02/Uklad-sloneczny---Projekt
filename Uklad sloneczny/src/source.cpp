@@ -16,7 +16,7 @@ using namespace std;
 #include "Camera.h"
 #include "Texture.h"
 
-const double targetFrameTime = 1.0 / 10000.0;
+const double targetFrameTime = 1.0 / 1000.0;
 
 // Globalny mno¿nik czasu, aby spowolniæ symulacjê
 const double timeScale = 0.001;
@@ -110,15 +110,6 @@ int main() {
 	GLuint dxID = glGetUniformLocation(shaderProgram.ID, "dx");
 	GLuint dyID = glGetUniformLocation(shaderProgram.ID, "dy");
 	
-	// ========= //
-	// kolejnosc argumentow:
-	//	 [NEW] œcie¿ka do pliku z tekstur¹
-	//	 rozmiar_planety								
-	//   predkosc_ruchu_planety						
-	//   promien_okregu_x, promien_okregu_y			  (dla okregu takie same, dla elips ró¿ne)
-	//   color_r, color_g, color_b					  (kolejne wartosci koloru z przed. [0.,1.]
-	//   srodek_okregu_ruchu_x, srodek_okregu_ruchu_y (koordynaty srodka, standardowo rowne 0, mozna pominac przy wpisywaniu)
-	//
 	Planet Mercury("src/Textures/8k_mercury.jpg",0.069849839, 2.306994196, 20.6064265, 17.91523936, 26, 26, 26);
 	Orbit mercuryOrbit(Mercury.radius_x, Mercury.radius_y);
 	Planet Venus("src/Textures/8k_venus_surface.jpg",0.11001818, 1.972026594, 23.88428091, 23.73729699, 230, 230, 230);
@@ -149,7 +140,7 @@ int main() {
 	Planet Moon("src/Textures/8k_moon.jpg", 0.058949131, 10, 3.701436014, 3.567086838, 254, 252, 215, Earth.center_x, Earth.center_y);
 	Orbit moonOrbit(3.701436014, 3.567086838, Earth.center_x, Earth.center_y);
 	Planet MarsMoon("src/Textures/8k_moon.jpg", 0.038949131, 15, 2.56, 2.56, 254, 252, 215, Earth.center_x, Earth.center_y);
-	//
+
 	Orbit phobosOrbit(1.0, 1.0, Mars.radius_x, Mars.radius_y);
 	Planet phobos("src/Textures/moon1.jpg", 0.042594766, 10.5, 1.0, 1.0, 179, 177, 176, Mars.center_x, Mars.center_y);
 	Orbit deimosOrbit(0.5, 0.5, Mars.radius_x, Mars.radius_y);
@@ -165,6 +156,9 @@ int main() {
 	Planet oberon("src/Textures/moon3.jpg", 0.030, 9, 2.5, 2.5, 179, 177, 176, Uran.center_x, Uran.center_y);
 	Orbit umrielOrbit(2.0, 2.0, Uran.radius_x, Uran.radius_y);
 	Planet umbriel("src/Textures/moon1.jpg", 0.027, 5, 2.0, 2.0, 179, 177, 176, Uran.center_x, Uran.center_y);
+
+	Orbit deathstarOrbit(4.5, 4.5, Earth.center_x, Earth.center_y);
+	Planet deathstar("src/Textures/deathstar.jpg", 0.052594766, 7, 4.5, 4.5, 179, 177, 176, Earth.center_x, Earth.center_y);
 
 
 	// ========= // œwiat³o i cienie
@@ -306,7 +300,9 @@ int main() {
 		drawIt(tytania, time, shaderProgram.ID, Uran);
 		drawIt(oberon, time, shaderProgram.ID, Uran);
 
-		
+		drawIt(deathstarOrbit, time, shaderProgram.ID, Earth);
+		drawIt(deathstar, time, shaderProgram.ID, Earth);
+
 		// S£OÑCE
 		drawSun(Sun, lightShader, lightVAO, *currentCamera);
 		// ========= //
