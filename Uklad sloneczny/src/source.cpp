@@ -131,8 +131,8 @@ int main() {
 	Orbit jupiterOrbit(Jupiter.radius_x, Jupiter.radius_y);
 	Planet Saturn("src/Textures/8k_saturn.jpg", 0.347182949, 1.038160767, 57.362621, 55.26047248, 176, 143, 54);
 	Orbit saturnOrbit(Saturn.radius_x, Saturn.radius_y);
-	Planet Ur_Anus("src/Textures/2k_uranus.jpg", 0.226092901, 0.869226987, 72.11247852, 70.05098327, 85, 128, 170);
-	Orbit uranusOrbit(Ur_Anus.radius_x, Ur_Anus.radius_y);
+	Planet Uran("src/Textures/2k_uranus.jpg", 0.226092901, 0.869226987, 72.11247852, 70.05098327, 85, 128, 170);
+	Orbit uranusOrbit(Uran.radius_x, Uran.radius_y);
 	Planet Neptune("src/Textures/2k_neptune.jpg", 0.222548871, 0.774596669, 82.85278982, 82.24130783, 54, 104, 150);
 	Orbit neptuneOrbit(Neptune.radius_x, Neptune.radius_y);
 
@@ -140,17 +140,31 @@ int main() {
 
 	Planet Ganymede("src/Textures/moon1.jpg", 0.072594766, 4.5, 5.114045609, 5.114045609, 179, 177, 176, Jupiter.center_x, Jupiter.center_y);
 	Orbit ganymedeOrbit(5.114045609, 5.114045609, Jupiter.center_x, Jupiter.center_y);
-	Planet Titan("src/Textures/moon2.jpg", 0.0717635, 1, 5.313292846, 5.313292846, 224, 194, 133, Saturn.center_x, Saturn.center_y);
+	Planet Titan("src/Textures/moon2.jpg", 0.0717635, 3, 5.313292846, 5.313292846, 224, 194, 133, Saturn.center_x, Saturn.center_y);
 	Orbit titanOrbit(5.313292846, 5.313292846, Saturn.center_x, Saturn.center_y);
-	Planet Callisto("src/Textures/moon3.jpg", 0.06942622, 1, 6.171005793, 6.171005793, 160, 189, 183, Jupiter.center_x, Jupiter.center_y);
+	Planet Callisto("src/Textures/moon3.jpg", 0.06942622, 4, 6.171005793, 6.171005793, 160, 189, 183, Jupiter.center_x, Jupiter.center_y);
 	Orbit callistoOrbit(6.171005793, 6.171005793, Jupiter.center_x, Jupiter.center_y);
 	Planet Io("src/Textures/moon4.jpg", 0.06035727, 1, 3.74948141, 3.74948141, 204, 153, 0, Jupiter.center_x, Jupiter.center_y);
 	Orbit ioOrbit(3.74948141, 3.74948141, Jupiter.center_x, Jupiter.center_y);
 	Planet Moon("src/Textures/8k_moon.jpg", 0.058949131, 10, 3.701436014, 3.567086838, 254, 252, 215, Earth.center_x, Earth.center_y);
 	Orbit moonOrbit(3.701436014, 3.567086838, Earth.center_x, Earth.center_y);
 	Planet MarsMoon("src/Textures/8k_moon.jpg", 0.038949131, 15, 2.56, 2.56, 254, 252, 215, Earth.center_x, Earth.center_y);
+	//
 	Orbit phobosOrbit(1.0, 1.0, Mars.radius_x, Mars.radius_y);
 	Planet phobos("src/Textures/moon1.jpg", 0.042594766, 10.5, 1.0, 1.0, 179, 177, 176, Mars.center_x, Mars.center_y);
+	Orbit deimosOrbit(0.5, 0.5, Mars.radius_x, Mars.radius_y);
+	Planet deimos("src/Textures/8k_moon.jpg", 0.022594766, 7, 0.5, 0.5, 179, 177, 176, Mars.center_x, Mars.center_y);
+
+	Orbit tytaniaOrbit(4.5, 4.5, Uran.radius_x, Uran.radius_y);
+	Planet tytania("src/Textures/moon1.jpg", 0.032, 10, 4.5, 4.5, 179, 177, 176, Uran.center_x, Uran.center_y);
+	Orbit mirandaOrbit(3.5, 3.5, Uran.radius_x, Uran.radius_y);
+	Planet miranda("src/Textures/8k_moon.jpg", 0.022594766, 14, 3.5, 3.5, 179, 177, 176, Uran.center_x, Uran.center_y);
+	Orbit arielOrbit(3.0, 3.0, Uran.radius_x, Uran.radius_y);
+	Planet ariel("src/Textures/moon4.jpg", 0.027, 7, 3.0, 3.0, 179, 177, 176, Uran.center_x, Uran.center_y);
+	Orbit oberonOrbit(2.5, 2.5, Uran.radius_x, Uran.radius_y);
+	Planet oberon("src/Textures/moon3.jpg", 0.030, 9, 2.5, 2.5, 179, 177, 176, Uran.center_x, Uran.center_y);
+	Orbit umrielOrbit(2.0, 2.0, Uran.radius_x, Uran.radius_y);
+	Planet umbriel("src/Textures/moon1.jpg", 0.027, 5, 2.0, 2.0, 179, 177, 176, Uran.center_x, Uran.center_y);
 
 
 	// ========= // œwiat³o i cienie
@@ -256,7 +270,7 @@ int main() {
 		drawIt(Mars, time, shaderProgram.ID);
 		drawIt(Jupiter, time, shaderProgram.ID);
 		drawIt(Saturn, time, shaderProgram.ID);
-		drawIt(Ur_Anus, time, shaderProgram.ID);
+		drawIt(Uran, time, shaderProgram.ID);
 		drawIt(Neptune, time, shaderProgram.ID);
 		
 		// KSIÊ¯YCE - orbity
@@ -267,6 +281,14 @@ int main() {
 		drawIt(moonOrbit, time, shaderProgram.ID, Earth);
 		//
 		drawIt(phobosOrbit, time, shaderProgram.ID, Mars);
+		drawIt(deimosOrbit, time, shaderProgram.ID, Mars);
+		//
+		drawIt(tytaniaOrbit, time, shaderProgram.ID, Uran);
+		drawIt(mirandaOrbit, time, shaderProgram.ID, Uran);
+		drawIt(arielOrbit, time, shaderProgram.ID, Uran);
+		drawIt(oberonOrbit, time, shaderProgram.ID, Uran);
+		drawIt(umrielOrbit, time, shaderProgram.ID, Uran);
+		
 
 		// KSIÊ¯YCE
 		drawIt(Ganymede, time, shaderProgram.ID, Jupiter);
@@ -276,6 +298,13 @@ int main() {
 		drawIt(Moon, time, shaderProgram.ID, Earth);
 		//
 		drawIt(phobos, time, shaderProgram.ID, Mars);
+		drawIt(deimos, time, shaderProgram.ID, Mars);
+		//
+		drawIt(miranda, time, shaderProgram.ID, Uran);
+		drawIt(ariel, time, shaderProgram.ID, Uran);
+		drawIt(umbriel, time, shaderProgram.ID, Uran);
+		drawIt(tytania, time, shaderProgram.ID, Uran);
+		drawIt(oberon, time, shaderProgram.ID, Uran);
 
 		
 		// S£OÑCE
